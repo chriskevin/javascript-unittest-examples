@@ -1,0 +1,15 @@
+# 3rd party libs bloat
+libs/**/.gitignore
+libs/**/.npmignore
+
+# Node.js packages
+**/node_modules/*
+
+# Generated output
+
+
+# Other
+.DS_Store
+config.codekit
+
+**/*.suo
