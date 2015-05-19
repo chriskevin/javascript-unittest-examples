@@ -1,6 +1,6 @@
 var fs = require('fs');
 //Load all files from json file to prevent bloating of config file
-var files = JSON.parse(fs.readFileSync("tests/config/files.json"));
+var files = JSON.parse(fs.readFileSync("<tests></tests>/config/files.json"));
 
 module.exports = function (config) {
     config.set({
