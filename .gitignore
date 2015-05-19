@@ -3,6 +3,7 @@ bower_components/*
 
 # Node.js packages
 **/node_modules/*
+npm-debug.log
 
 # Generated output
 

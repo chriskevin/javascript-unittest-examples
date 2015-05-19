@@ -8,7 +8,7 @@
     "test": "tests"
   },
   "scripts": {
-    "pretest": "jslint src/**/*.js",
+    "pretest": "jslint src/**/*.js tests/specs/**/*.js",
     "test": "karma start tests/config/karma-dev-config.js"
   },
   "repository": {
