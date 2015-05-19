@@ -1,6 +1,5 @@
-# 3rd party libs bloat
-libs/**/.gitignore
-libs/**/.npmignore
+# 3rd party libs
+bower_components/*
 
 # Node.js packages
 **/node_modules/*
