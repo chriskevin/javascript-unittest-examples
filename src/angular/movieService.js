@@ -5,9 +5,9 @@
         .module('ckUnitTest')
             .factory('movieService', MovieService);
 
-    MovieService.$inject = ['$http'];
+    MovieService.$inject = ['$http', 'actorService'];
 
-    function MovieService($http) {
+    function MovieService($http, actorService) {
         var service = {
             getMovies: getMovies
         };
