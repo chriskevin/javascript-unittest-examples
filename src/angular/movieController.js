@@ -20,12 +20,14 @@
         function getMovies() {
             return movieService
                     .getMovies()
-                        .then(function () {
-
+                        .then(function (movies) {
+                            vm.movies = movies;
                         })
-                        .catch(function () {
-                            
-                        });
+                        .catch(handleError);
+        }
+
+        function handleError(reason) {
+            vm.error = reason.message;
         }
 
     }

@@ -1,4 +1,6 @@
-/* global describe: true */
+// Create a describe for the object with the methods and state that you want to test.
+// This gives you some encapsulation from the Javascript global scope and is a good place
+// to put "use strict" or variables that should be accessible for all tests.
 describe('movieGenreFilter', function () {
     'use strict';
 
@@ -15,13 +17,16 @@ describe('movieGenreFilter', function () {
         // Although any services can be injected through the inject functions callback,
         // it is cleaner to request the $injector service and call it's get method.
         inject(function ($injector) {
+            // Get the instance of the filter.
             movieGenreFilter = $injector.get('movieGenreFilter');
         });
     });
 
 
+    // Objects and functions that are small and with less complexity, do not gain much by creating sub describes.
+    // It is therefore better to put the tests directly in the main describe.
     it('should return an array only containing movies with matching the genre "Horror"', function () {
-        // Assemble
+        // Arrange
         var result,
             movies = [
                 { genre: 'Horror' },
