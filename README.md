@@ -1,5 +1,7 @@
 # Javascript Unit Test Examples
 [![Build Status](https://travis-ci.org/chriskevin/javascript-unittest-examples.svg?branch=master)](https://travis-ci.org/chriskevin/javascript-unittest-examples)
+[![Code Climate](https://codeclimate.com/github/chriskevin/javascript-unittest-examples/badges/gpa.svg)](https://codeclimate.com/github/chriskevin/javascript-unittest-examples)
+[![Test Coverage](https://codeclimate.com/github/chriskevin/javascript-unittest-examples/badges/coverage.svg)](https://codeclimate.com/github/chriskevin/javascript-unittest-examples/coverage)
 [![devDependency Status](https://david-dm.org/chriskevin/javascript-unittest-examples/dev-status.svg)](https://david-dm.org/chriskevin/javascript-unittest-examples#info=devDependencies)
 
 This is an example project demonstrating how to setup unit tests for different Javascript frameworks.
