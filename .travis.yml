@@ -9,4 +9,8 @@ after_script:
     - codeclimate-test-reporter < lcov.info
 addons:
     code_climate:
-    repo_token: 0ee385d2c5f9fe94b3eebac11d6468cb9e4b1608d39eb8fc2f48669272db1a01
+        repo_token: 0ee385d2c5f9fe94b3eebac11d6468cb9e4b1608d39eb8fc2f48669272db1a01
+    addons:
+    sauce_connect:
+        username: "Your Sauce Labs username"
+        access_key: "4871ba29-6a47-4918-8896-81d78350e7e1"
