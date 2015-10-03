@@ -27,19 +27,20 @@ describe('movieGenreFilter', function () {
     // It is therefore better to put the tests directly in the main describe.
     it('should return an array only containing movies with matching the genre "Horror"', function () {
         // Arrange
-        var result,
-            movies = [
+        var movies = [
                 { genre: 'Horror' },
                 { genre: 'Drama' },
                 { genre: 'Horror' }
             ];
 
         // Act
-        result = movieGenreFilter(movies, 'Horror');
+        var result = movieGenreFilter(movies, 'Horror');
 
         // Assert
         expect(result.length).toEqual(2);
-        expect(result[0].key).toEqual('Horror');
-        expect(result[1].key).toEqual('Horror');
+        expect(result[0].genre).toEqual('Horror');
+        expect(result[1].genre).toEqual('Horror');
     });
+
+
 });

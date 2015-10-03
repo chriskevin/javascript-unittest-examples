@@ -8,12 +8,13 @@ describe('MovieController', function () {
     var movieController,
         mockMovieService,
         $scope,
+        $q,
         deferred;
+
 
     // Define a beforeEach that should be run before all tests.
     beforeEach(function () {
         mockMovieService = jasmine.createSpyObj('MovieService', ['getMovies']);
-        deferred = $q.defer();
 
         // Use angular-mocks to instantiate the module programmatically.
         module('ckUnitTest');
@@ -24,6 +25,9 @@ describe('MovieController', function () {
         inject(function ($injector) {
             // Request the rootScope and create a child scope.
             $scope = ($injector.get('$rootScope')).$new();
+
+            $q = $injector.get('$q');
+            deferred = $q.defer();
 
             // Request the $controller service used to instantiate the controller.
             var $controller = $injector.get('$controller');
@@ -60,4 +64,6 @@ describe('MovieController', function () {
         });
 
     });
+
+
 });

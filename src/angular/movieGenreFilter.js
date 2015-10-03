@@ -10,17 +10,10 @@
             .filter('movieGenre', MovieGenreFilter);
 
     function MovieGenreFilter() {
-        return function(movies, genre) {
-            var matchingMovies = [];
-
-            angular
-                .forEach(movies, function (movie) {
-                    if (movies.genre === genre) {
-                        matchingMovies.push(movie);
-                    }
-                });
-
-            return matchingMovies;
+        return function (movies, genre) {
+            return movies.filter(function (movie) {
+                return (movie.genre === genre);
+            });
         };
     }
 

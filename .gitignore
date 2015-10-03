@@ -1,4 +1,4 @@
-# 3rd party libs
+# Vendor libs
 bower_components/*
 
 # Node.js packages
@@ -6,7 +6,7 @@ bower_components/*
 npm-debug.log
 
 # Generated output
-
+test/reports/coverage/*
 
 # Other
 .DS_Store

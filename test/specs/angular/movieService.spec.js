@@ -63,13 +63,16 @@ describe('MovieService', function () {
 
         it('should call movieService.getMovies once', function () {
             // Arrange
+            $httpBackend.expectPOST('/getMovies');
 
             // Act
             movieService.getMovies();
+            $httpBackend.flush();
 
             // Assert
-            
         });
 
     });
- 
+
+
+});
