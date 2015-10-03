@@ -1,5 +1,7 @@
 # Javascript Unit Test Examples
-This is an example project demonstrating how to settup unit tests for different Javascript frameworks.
+[![Build Status](https://travis-ci.org/chriskevin/javascript-unittest-examples.svg?branch=master)](https://travis-ci.org/chriskevin/javascript-unittest-examples)
+
+This is an example project demonstrating how to setup unit tests for different Javascript frameworks.
 
 ## Prerequisites
 The project assumes that you have [Node.js](https://nodejs.org/en/) installed and use npm.
