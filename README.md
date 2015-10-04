@@ -14,3 +14,6 @@ Before attempting to run any tests make sure to run `npm install` and `bower ins
 ## Running Tests
 To run the tests enter `npm test`, this will trigger a single run of Karma using the config file `test/config/karma-test-config.js`.
 Karma will also produce code coverage which will be located in `test/reports/coverage`.
+
+## License
+[MIT License](https://github.com/chriskevin/javascript-unittest-examples/blob/master/LICENSE)

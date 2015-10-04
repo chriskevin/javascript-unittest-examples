@@ -1,43 +1,47 @@
 {
-    "name": "javascript-unittest-examples",
-    "version": "1.0.0",
-    "description": "Examples of Javascript unit testing",
-    "main": " ",
-    "directories": {
-        "src": "src",
-        "test": "test"
-    },
-    "scripts": {
-        "test": "karma start test/config/karma-test-config.js"
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/chriskevin/javascript-unittest-examples.git"
-    },
-    "keywords": [
-        "javascript",
-        "unit test",
-        "jasmine",
-        "angularjs"
-    ],
-    "author": "Chris Sundberg",
-    "license": "MIT",
-    "bugs": {
-        "url": "https://github.com/chriskevin/javascript-unittest-examples/issues"
-    },
-    "homepage": "https://github.com/chriskevin/javascript-unittest-examples",
-    "devDependencies": {
-        "jasmine-core": "^2.3.4",
-        "karma": "^0.13.10",
-        "karma-chrome-launcher": "^0.2.0",
-        "karma-coverage": "^0.5.2",
-        "karma-firefox-launcher": "^0.1.6",
-        "karma-ie-launcher": "^0.2.0",
-        "karma-jasmine": "^0.3.6",
-        "karma-opera-launcher": "^0.3.0",
-        "karma-phantomjs-launcher": "^0.2.1",
-        "karma-requirejs": "^0.2.2",
-        "karma-safari-launcher": "^0.1.1",
-        "requirejs": "^2.1.20"
-    }
+  "name": "javascript-unittest-examples",
+  "version": "1.0.0",
+  "description": "Examples of Javascript unit testing",
+  "main": " ",
+  "directories": {
+    "src": "src",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "karma start test/config/karma-test-config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/chriskevin/javascript-unittest-examples.git"
+  },
+  "keywords": [
+    "javascript",
+    "unit test",
+    "jasmine",
+    "angularjs"
+  ],
+  "author": "Chris Sundberg",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/chriskevin/javascript-unittest-examples/issues"
+  },
+  "homepage": "https://github.com/chriskevin/javascript-unittest-examples",
+  "devDependencies": {
+    "jasmine-core": "^2.3.4",
+    "karma": "^0.13.10",
+    "karma-chrome-launcher": "^0.2.0",
+    "karma-coverage": "^0.5.2",
+    "karma-firefox-launcher": "^0.1.6",
+    "karma-ie-launcher": "^0.2.0",
+    "karma-jasmine": "^0.3.6",
+    "karma-opera-launcher": "^0.3.0",
+    "karma-phantomjs-launcher": "^0.2.1",
+    "karma-requirejs": "^0.2.2",
+    "karma-safari-launcher": "^0.1.1",
+    "pre-commit": "^1.1.1",
+    "requirejs": "^2.1.20"
+  },
+  "pre-commit": [
+    "test"
+  ]
 }
