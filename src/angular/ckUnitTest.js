@@ -1,2 +1,1 @@
-angular
-    .module('ckUnitTest', []);
+angular.module('ckUnitTest', []);

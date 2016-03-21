@@ -1,29 +1,33 @@
-var fs = require('fs');
-//Load all files from json file to prevent bloating of config file
-var files = JSON.parse(fs.readFileSync("test/config/files.json"));
+module.exports = config => {
+    const commonConfig = require('./karma-common-config');
 
-module.exports = function (config) {
     config.set({
-        basePath : '../../',
+        basePath: commonConfig.basePath,
 
-        files : files,
+        files: commonConfig.files,
 
         singleRun: false,
         colors: true,
         autoWatch: true,
         logLevel: config.LOG_ERROR,
 
-        frameworks: ['jasmine'],
+        frameworks: commonConfig.frameworks,
 
-        browsers : ['PhantomJS'],
+        browsers: ['PhantomJS'],
 
-        plugins : [
-            'karma-phantomjs-launcher',
-            'karma-chrome-launcher',
-            'karma-jasmine'
-        ],
+        plugins: commonConfig.plugins,
 
-        reporters: ['dots'],
+        // coverage reporter generates the coverage
+        reporters: commonConfig.reporters,
+
+        babelPreprocessor: commonConfig.babelPreprocessor,
+
+        preprocessors: commonConfig.preprocessors,
+
+        // optionally, configure the reporter
+        coverageReporter: commonConfig.coverageReporter,
+
+        thresholdReporter: commonConfig.thresholdReporter,
 
         client: {
             captureConsole: true

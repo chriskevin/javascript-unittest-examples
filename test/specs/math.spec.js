@@ -1,11 +1,11 @@
-describe('math', function () {
+describe('math', () => {
     'use strict';
 
-    describe('math.add', function () {
+    describe('math.add', () => {
 
-        it('should add the given values', function () {
+        it('should add the given values', () => {
             // Assemble
-            var result;
+            let result;
 
             // Act
             result = add(9, 7);

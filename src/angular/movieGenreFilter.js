@@ -1,4 +1,4 @@
-(function () {
+(() => {
     'use strict';
 
     // NOTE: A common mistake when registering a filter is to name it e.g. "movieGenreFilter".
@@ -10,11 +10,9 @@
             .filter('movieGenre', MovieGenreFilter);
 
     function MovieGenreFilter() {
-        return function (movies, genre) {
-            return movies.filter(function (movie) {
-                return (movie.genre === genre);
-            });
-        };
+        return (movies, genre) =>
+            movies.filter(movie =>
+                (movie.genre === genre));
     }
 
 })();

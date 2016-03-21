@@ -1,4 +1,4 @@
-(function () {
+(() => {
     'use strict';
 
     angular
@@ -8,21 +8,19 @@
     MovieService.$inject = ['$http', 'actorService'];
 
     function MovieService($http, actorService) {
-        var service = {
-            getMovies: getMovies
+        const service = {
+            getMovies
         };
         return service;
 
-
         function getMovies() {
-            $http
-                .post('/getMovies')
-                    .success(function (data) {
+            $http.post('/getMovies')
+                .success(data => {
 
-                    })
-                    .error(function (data, status) {
+                })
+                .error((data, status) => {
 
-                    });
+                });
         }
 
     }

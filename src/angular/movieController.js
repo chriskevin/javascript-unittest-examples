@@ -1,4 +1,4 @@
-(function () {
+(() => {
     'use strict';
 
     angular
@@ -8,7 +8,7 @@
     MovieController.$inject = ['movieService'];
 
     function MovieController(movieService) {
-        var vm = this;
+        const vm = this;
 
         // Public fields
         vm.movies = [];
@@ -16,11 +16,10 @@
         // Public methods
         vm.getMovies = getMovies;
 
-
         function getMovies() {
             return movieService
                     .getMovies()
-                        .then(function (movies) {
+                        .then(movies => {
                             vm.movies = movies;
                         })
                         .catch(handleError);
