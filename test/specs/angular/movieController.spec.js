@@ -1,19 +1,15 @@
 // Create a describe for the object with the methods and state that you want to test.
 // This gives you some encapsulation from the Javascript global scope and is a good place
 // to put "use strict" or variables that should be accessible for all tests.
-describe('MovieController', () => {
+describe('MovieController', function() {
     'use strict';
 
     // Define variables that should be accessible for all tests.
-    let movieController;
-    let mockMovieService;
-    let $scope;
-    let $q;
-    let deferred;
+    const testSuite = this;
 
     // Define a beforeEach that should be run before all tests.
     beforeEach(() => {
-        mockMovieService = jasmine.createSpyObj('MovieService', ['getMovies']);
+        testSuite.mockMovieService = jasmine.createSpyObj('MovieService', ['getMovies']);
 
         // Use angular-mocks to instantiate the module programmatically.
         module('ckUnitTest');
@@ -23,18 +19,18 @@ describe('MovieController', () => {
         // it is cleaner to request the $injector service and call it's get method.
         inject($injector => {
             // Request the rootScope and create a child scope.
-            $scope = ($injector.get('$rootScope')).$new();
+            testSuite.$scope = ($injector.get('$rootScope')).$new();
 
-            $q = $injector.get('$q');
-            deferred = $q.defer();
+            testSuite.$q = $injector.get('$q');
+            testSuite.deferred = testSuite.$q.defer();
 
             // Request the $controller service used to instantiate the controller.
             const $controller = $injector.get('$controller');
 
             // Create an instance of the controller to test and inject it with mocked dependencies.
-            movieController = $controller('movieController', {
-                $scope,
-                movieService: mockMovieService
+            testSuite.movieController = $controller('movieController', {
+                $scope: testSuite.$scope,
+                movieService: testSuite.mockMovieService
             });
         });
     });
@@ -47,18 +43,18 @@ describe('MovieController', () => {
 
         // Do common arrangements before each of the method tests
         beforeEach(() => {
-            mockMovieService.getMovies.and.returnValue(deferred.promise);
+            testSuite.mockMovieService.getMovies.and.returnValue(testSuite.deferred.promise);
         });
 
         it('should call movieService.getMovies once', () => {
             // Arrange
 
             // Act
-            movieController.getMovies();
+            testSuite.movieController.getMovies();
 
             // Assert
-            expect(mockMovieService.getMovies).toHaveBeenCalled();
-            expect(mockMovieService.getMovies.calls.count()).toEqual(1);
+            expect(testSuite.mockMovieService.getMovies).toHaveBeenCalled();
+            expect(testSuite.mockMovieService.getMovies.calls.count()).toEqual(1);
         });
 
     });

@@ -40,10 +40,10 @@ module.exports = {
 
     // optionally, configure the reporter
     coverageReporter: {
-        dir: 'test/reports/coverage/',
+        dir: 'coverage/',
         reporters: [
             {type: 'html', subdir: 'html'},
-            {type: 'lcov', subdir: 'lcov'}
+            {type: 'lcov', subdir: '.', file: 'lcov.info'}
         ]
     },
 

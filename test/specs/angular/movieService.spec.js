@@ -1,14 +1,14 @@
 // Create a describe for the object with the methods and state that you want to test.
 // This gives you some encapsulation from the Javascript global scope and is a good place
 // to put "use strict" or variables that should be accessible for all tests.
-describe('MovieService', () => {
+describe('MovieService', function() {
     'use strict';
 
     // Define variables that should be accessible for all tests.
+    const testSuite = this;
     let movieService;
     let $httpBackend;
-    let mockActorService;
-    let movies = [
+    const movies = [
         {
             title: 'Dunwich Horror, The'
         },
@@ -20,14 +20,14 @@ describe('MovieService', () => {
     // Define a beforeEach that should be run before all tests.
     beforeEach(() => {
         // Create spies for all dependencies.
-        mockActorService = jasmine.createSpyObj('actorService', ['getActorBiography']);
+        testSuite.mockActorService = jasmine.createSpyObj('actorService', ['getActorBiography']);
 
         // Use angular-mocks to instantiate the module programmatically.
         module('ckUnitTest');
 
         // Override factory provider for dependencies and return spyable mocks.
         module($provide => {
-            $provide.factory('actorService', () => mockActorService);
+            $provide.factory('actorService', () => testSuite.mockActorService);
         });
 
         // Use angular mocks to get hold of core services and components registered to the module.

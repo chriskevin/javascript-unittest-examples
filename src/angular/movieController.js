@@ -7,6 +7,10 @@
 
     MovieController.$inject = ['movieService'];
 
+    /**
+     * [MovieController description]
+     * @param {MovieService} movieService [description]
+     */
     function MovieController(movieService) {
         const vm = this;
 
@@ -14,20 +18,15 @@
         vm.movies = [];
 
         // Public methods
-        vm.getMovies = getMovies;
-
-        function getMovies() {
-            return movieService
-                    .getMovies()
-                        .then(movies => {
-                            vm.movies = movies;
-                        })
-                        .catch(handleError);
-        }
-
-        function handleError(reason) {
-            vm.error = reason.message;
-        }
+        vm.getMovies = () =>
+            movieService
+                .getMovies()
+                    .then(movies => {
+                        vm.movies = movies;
+                    })
+                    .catch(reason => {
+                        vm.error = reason.message;
+                    });
 
     }
 

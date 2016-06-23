@@ -7,22 +7,26 @@
 
     MovieService.$inject = ['$http', 'actorService'];
 
+    /**
+     * [MovieService description]
+     * @param {$http} $http        [description]
+     * @param {ActorService} actorService [description]
+     * @returns {Object} The service API.
+     */
     function MovieService($http, actorService) {
-        const service = {
-            getMovies
-        };
-        return service;
 
-        function getMovies() {
+        const getMovies = () =>
             $http.post('/getMovies')
                 .success(data => {
-
+                    console.log(data);
                 })
                 .error((data, status) => {
-
+                    console.log(data, status);
                 });
-        }
 
+        return {
+            getMovies
+        };
     }
 
 })();

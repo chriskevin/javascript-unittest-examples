@@ -6,7 +6,8 @@ bower_components/*
 npm-debug.log
 
 # Generated output
-test/reports/coverage/*
+coverage/
+test/reports/
 
 # Other
 .DS_Store

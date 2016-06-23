@@ -9,6 +9,9 @@
         .module('ckUnitTest')
             .filter('movieGenre', MovieGenreFilter);
 
+    /**
+     * [MovieGenreFilter description]
+     */
     function MovieGenreFilter() {
         return (movies, genre) =>
             movies.filter(movie =>
