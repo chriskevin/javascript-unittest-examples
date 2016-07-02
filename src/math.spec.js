@@ -1,5 +1,6 @@
+import add from './math';
+
 describe('math', () => {
-    'use strict';
 
     describe('math.add', () => {
 

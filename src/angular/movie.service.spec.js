@@ -1,8 +1,9 @@
+import './movie.service';
+
 // Create a describe for the object with the methods and state that you want to test.
 // This gives you some encapsulation from the Javascript global scope and is a good place
 // to put "use strict" or variables that should be accessible for all tests.
 describe('MovieService', function() {
-    'use strict';
 
     // Define variables that should be accessible for all tests.
     const testSuite = this;
@@ -23,17 +24,17 @@ describe('MovieService', function() {
         testSuite.mockActorService = jasmine.createSpyObj('actorService', ['getActorBiography']);
 
         // Use angular-mocks to instantiate the module programmatically.
-        module('ckUnitTest');
+        angular.mock.module('ckUnitTest');
 
         // Override factory provider for dependencies and return spyable mocks.
-        module($provide => {
+        angular.mock.module($provide => {
             $provide.factory('actorService', () => testSuite.mockActorService);
         });
 
         // Use angular mocks to get hold of core services and components registered to the module.
         // Although any services can be injected through the inject functions callback,
         // it is cleaner to request the $injector service and call it's get method.
-        inject($injector => {
+        angular.mock.inject($injector => {
             $httpBackend = $injector.get('$httpBackend');
 
             // Define default responses for each http call.
@@ -61,6 +62,17 @@ describe('MovieService', function() {
         it('should call movieService.getMovies once', () => {
             // Arrange
             $httpBackend.expectPOST('/getMovies');
+
+            // Act
+            movieService.getMovies();
+            $httpBackend.flush();
+
+            // Assert
+        });
+
+        it('should call movieService.getMovies and get an error', () => {
+            // Arrange
+            $httpBackend.expectPOST('/getMovies').respond(500, 'Unexpected error');
 
             // Act
             movieService.getMovies();

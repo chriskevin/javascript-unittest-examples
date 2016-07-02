@@ -1,8 +1,9 @@
+import './movie-genre.filter';
+
 // Create a describe for the object with the methods and state that you want to test.
 // This gives you some encapsulation from the Javascript global scope and is a good place
 // to put "use strict" or variables that should be accessible for all tests.
 describe('movieGenreFilter', () => {
-    'use strict';
 
     // Define variables that should be accessible for all tests.
     let movieGenreFilter;
@@ -11,12 +12,12 @@ describe('movieGenreFilter', () => {
     beforeEach(() => {
 
         // Use angular-mocks to instantiate the module programmatically.
-        module('ckUnitTest');
+        angular.mock.module('ckUnitTest');
 
         // Use angular mocks to get hold of core services and components registered to the module.
         // Although any services can be injected through the inject functions callback,
         // it is cleaner to request the $injector service and call it's get method.
-        inject($injector => {
+        angular.mock.inject($injector => {
             // Get the instance of the filter.
             movieGenreFilter = $injector.get('movieGenreFilter');
         });

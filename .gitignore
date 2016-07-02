@@ -1,13 +1,14 @@
 # Vendor libs
-bower_components/*
+bower_components/
 
 # Node.js packages
-**/node_modules/*
+node_modules/
 npm-debug.log
 
 # Generated output
+build/
+!build/index.html
 coverage/
-test/reports/
 
 # Other
 .DS_Store
