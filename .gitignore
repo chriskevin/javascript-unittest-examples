@@ -1,17 +1,22 @@
-# Vendor libs
+# IDE/Editors
+.idea/*
+*.iml
+tmp/*
+
+# Bower
 bower_components/
 
-# Node.js packages
-node_modules/
+# Node.js
+node_modules/*
 npm-debug.log
 
 # Generated output
-build/
+build/*
 !build/index.html
-coverage/
+coverage/*
+docs/*
 
 # Other
 .DS_Store
 config.codekit
-
 **/*.suo
