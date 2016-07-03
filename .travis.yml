@@ -5,7 +5,7 @@ node_js:
 before_script:
     - npm install -g codeclimate-test-reporter
 after_script:
-    - codeclimate-test-reporter < test/reports/coverage/lcov/lcov.info
+    - codeclimate-test-reporter < coverage/lcov.info
 addons:
     code_climate:
         repo_token: 0ee385d2c5f9fe94b3eebac11d6468cb9e4b1608d39eb8fc2f48669272db1a01
