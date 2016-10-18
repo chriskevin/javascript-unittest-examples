@@ -1,12 +1,10 @@
 import AppComponent from './app.component';
 
-MovieListCtrl.$inject = ['movieService'];
-
 /**
  * [MovieController description]
  * @param {MovieService} movieService [description]
  */
-function MovieListCtrl(movieService) {
+function controller(movieService) {
     const ctrl = this;
 
     // Public fields
@@ -23,10 +21,11 @@ function MovieListCtrl(movieService) {
             });
 
 }
+controller.$inject = ['movieService'];
 
 AppComponent.component('movieList', {
     bindings: {},
-    controller: MovieListCtrl,
+    controller,
     template: `
         <ul>
             <li data-ng-repeat="movie in $ctrl.movies">{{movie.title}}</li>
@@ -34,4 +33,4 @@ AppComponent.component('movieList', {
     `
 });
 
-export default MovieListCtrl;
+export default controller;

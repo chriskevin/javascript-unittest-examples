@@ -3,20 +3,23 @@ import './movie-list.component';
 // Create a describe for the object with the methods and state that you want to test.
 // This gives you some encapsulation from the Javascript global scope and is a good place
 // to put "use strict" or variables that should be accessible for all tests.
-describe('movieListComponent', function() {
+describe('movieListComponent', () => {
 
     // Define variables that should be accessible for all tests.
-    const testSuite = this;
+    let movieListComponent;
+    let mockMovieService;
+    let $q;
+    let $scope;
 
     // Define a beforeEach that should be run before all tests.
     beforeEach(() => {
-        testSuite.mockMovieService = jasmine.createSpyObj('MovieService', ['getMovies']);
+        mockMovieService = jasmine.createSpyObj('MovieService', ['getMovies']);
 
         // Use angular-mocks to instantiate the module programmatically.
         angular.mock.module('ckUnitTest');
 
         angular.mock.module($provide => {
-            $provide.factory('movieService', () => testSuite.mockMovieService);
+            $provide.factory('movieService', () => mockMovieService);
         });
 
         // Use angular mocks to get hold of core services and components registered to the module.
@@ -24,16 +27,16 @@ describe('movieListComponent', function() {
         // it is cleaner to request the $injector service and call it's get method.
         angular.mock.inject($injector => {
             // Request the rootScope and create a child scope.
-            testSuite.$scope = ($injector.get('$rootScope')).$new();
+            $scope = ($injector.get('$rootScope')).$new();
 
-            testSuite.$q = $injector.get('$q');
+            $q = $injector.get('$q');
 
             // Request the $componentController service used to instantiate the controller.
             const $componentController = $injector.get('$componentController');
 
             // Create an instance of the component controller to test.
-            testSuite.movieListComponent = $componentController('movieList',
-                {$scope: testSuite.$scope},
+            movieListComponent = $componentController('movieList',
+                {$scope},
                 {}
             );
         });
@@ -45,21 +48,16 @@ describe('movieListComponent', function() {
     // Using this approach you can more easily refactor redundant arrangements and keep your test code clean.
     describe('#getMovies', () => {
 
-        // Do common arrangements before each of the method tests
-        beforeEach(() => {
-            testSuite.deferred = testSuite.$q.defer();
-            testSuite.mockMovieService.getMovies.and.returnValue(testSuite.deferred.promise);
-        });
-
         it('should call movieService.getMovies once', () => {
             // Arrange
+            mockMovieService.getMovies.and.returnValue($q.reject());
 
             // Act
-            testSuite.movieListComponent.getMovies();
+            movieListComponent.getMovies();
 
             // Assert
-            expect(testSuite.mockMovieService.getMovies).toHaveBeenCalled();
-            expect(testSuite.mockMovieService.getMovies.calls.count()).toEqual(1);
+            expect(mockMovieService.getMovies).toHaveBeenCalled();
+            expect(mockMovieService.getMovies.calls.count()).toEqual(1);
         });
 
         it('should set the fetched movies to the controller scope', done => {
@@ -72,14 +70,14 @@ describe('movieListComponent', function() {
                     title: 'Hills Have Eyes, The'
                 }
             ];
+            mockMovieService.getMovies.and.returnValue($q.resolve(movies));
 
             // Act
-            testSuite.movieListComponent.getMovies();
-            testSuite.deferred.resolve(movies);
-            testSuite.$scope.$apply();
+            movieListComponent.getMovies();
+            $scope.$apply();
 
             // Assert
-            expect(testSuite.movieListComponent.movies).toEqual(movies);
+            expect(movieListComponent.movies).toEqual(movies);
             done();
         });
 
@@ -88,14 +86,14 @@ describe('movieListComponent', function() {
             const error = {
                 message: 'No movies are currently available.'
             };
+            mockMovieService.getMovies.and.returnValue($q.reject(error));
 
             // Act
-            testSuite.movieListComponent.getMovies();
-            testSuite.deferred.reject(error);
-            testSuite.$scope.$apply();
+            movieListComponent.getMovies();
+            $scope.$apply();
 
             // Assert
-            expect(testSuite.movieListComponent.error).toEqual(error.message);
+            expect(movieListComponent.error).toEqual(error.message);
             done();
         });
 

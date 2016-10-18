@@ -17,7 +17,9 @@ module.exports = function(config) {
             'config/setup.spec.js': ['webpack', 'sourcemap']
         },
 
-        reporters: ['dots', 'coverage', 'spec'],
+        reportSlowerThan: 100,
+
+        reporters: ['dots', 'coverage', 'spec', 'tap-pretty'],
 
         // optionally, configure the reporter
         coverageReporter: {
@@ -26,7 +28,6 @@ module.exports = function(config) {
 
             reporters: [
                 {type: 'text-summary'},
-                {type: 'html', subdir: 'html'},
                 {type: 'lcov', file: 'lcov.info'}
             ],
 
@@ -40,7 +41,15 @@ module.exports = function(config) {
             }
         },
 
+        tapReporter: {
+            prettifier: 'faucet'
+        },
+
         webpack: {
+            node: {
+                fs: 'empty'
+            },
+
             devtool: 'inline-cheap-source-map',
 
             module: {

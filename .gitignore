@@ -13,8 +13,9 @@ npm-debug.log
 # Generated output
 build/*
 !build/index.html
-coverage/*
-docs/*
+coverage/
+docs/
+report/
 
 # Other
 .DS_Store

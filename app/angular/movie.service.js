@@ -1,9 +1,5 @@
 import AppComponent from './app.component';
 
-AppComponent.factory('movieService', MovieService);
-
-MovieService.$inject = ['$http', 'actorService'];
-
 /**
  * [MovieService description]
  * @param {$http} $http        [description]
@@ -25,5 +21,8 @@ function MovieService($http, actorService) {
         getMovies
     };
 }
+MovieService.$inject = ['$http', 'actorService'];
+
+AppComponent.factory('movieService', MovieService);
 
 export default MovieService;

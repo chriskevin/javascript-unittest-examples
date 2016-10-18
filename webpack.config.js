@@ -4,8 +4,8 @@ const webpack = require('webpack');
 
 module.exports = {
     entry: {
-        main: path.resolve(__dirname, 'src/main.entry.js'),
-        vendor: path.resolve(__dirname, 'src/vendor.js')
+        main: path.resolve(__dirname, 'app/main.entry.js'),
+        vendor: path.resolve(__dirname, 'app/vendor.js')
     },
 
     output: {
@@ -20,7 +20,7 @@ module.exports = {
                 loader: 'babel',
                 exclude: /(node_modules)/,
                 query: {
-                    presets: ['es2015', 'angular2'],
+                    presets: ['es2015'],
                     plugins: []
                 }
             },
