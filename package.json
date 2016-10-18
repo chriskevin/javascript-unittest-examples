@@ -70,10 +70,10 @@
   "config": {
     "pre-git": {
       "pre-commit": [
-        
+
       ],
       "pre-push": [
-        "test"
+        "npm test"
       ],
       "post-commit": [
 
