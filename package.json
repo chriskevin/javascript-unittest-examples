@@ -27,76 +27,56 @@
   "engines": {
     "node": "6.0.0"
   },
+  "browserslist": "> 0.25%, not dead",
   "dependencies": {
-    "angular": "1.5.8",
-    "angular-mocks": "1.5.8",
-    "react": "15.3.2"
+    "angular": "1.7.8",
+    "angular-mocks": "1.7.8",
+    "core-js": "3.2.1",
+    "react": "16.9.0"
   },
   "devDependencies": {
-    "babel-core": "6.17.0",
-    "babel-loader": "6.2.5",
-    "babel-plugin-__coverage__": "11.0.0",
-    "babel-preset-es2015": "6.16.0",
-    "eslint": "3.8.1",
-    "eslint-config-google": "0.6.0",
-    "eslint-plugin-angular": "1.4.1",
-    "eslint-plugin-jasmine": "1.8.1",
-    "eslint-plugin-json": "1.2.0",
+    "@babel/core": "7.5.5",
+    "@babel/preset-env": "7.5.5",
+    "babel-loader": "8.0.6",
+    "babel-plugin-istanbul": "5.2.0",
+    "eslint": "6.2.2",
+    "eslint-config-google": "0.13.0",
+    "eslint-plugin-angular": "4.0.1",
+    "eslint-plugin-jasmine": "2.10.1",
+    "eslint-plugin-json": "1.4.0",
     "faucet": "0.0.1",
-    "jasmine-core": "2.5.2",
-    "karma": "1.3.0",
-    "karma-chrome-launcher": "2.0.0",
-    "karma-coverage": "1.1.1",
-    "karma-firefox-launcher": "1.0.0",
-    "karma-ie-launcher": "1.0.0",
-    "karma-jasmine": "1.0.2",
-    "karma-phantomjs-launcher": "1.0.2",
+    "jasmine-core": "3.4.0",
+    "karma": "4.2.0",
+    "karma-chrome-launcher": "3.1.0",
+    "karma-coverage": "2.0.1",
+    "karma-firefox-launcher": "1.2.0",
+    "karma-jasmine": "2.0.1",
+    "karma-phantomjs-launcher": "1.0.4",
     "karma-safari-launcher": "1.0.0",
     "karma-sourcemap-loader": "0.3.7",
-    "karma-spec-reporter": "0.0.26",
-    "karma-tap": "3.1.1",
-    "karma-tap-pretty-reporter": "3.0.4",
-    "karma-webpack": "1.8.0",
-    "npm-run-all": "3.1.1",
+    "karma-spec-reporter": "0.0.32",
+    "karma-tap": "4.1.4",
+    "karma-tap-pretty-reporter": "4.1.0",
+    "karma-webpack": "4.0.2",
+    "npm-run-all": "4.1.5",
     "plato": "1.7.0",
-    "pre-git": "3.10.0",
-    "rimraf": "2.5.4",
-    "tape": "4.6.2",
-    "updtr": "0.2.1",
-    "webpack": "1.13.2",
-    "webpack-dev-server": "1.16.2",
-    "yarn": "0.15.1"
-  },
-  "config": {
-    "pre-git": {
-      "pre-commit": [
-
-      ],
-      "pre-push": [
-        "npm test"
-      ],
-      "post-commit": [
-
-      ],
-      "post-checkout": [
-        "yarn"
-      ],
-      "post-merge": [
-        "yarn"
-      ]
-    }
+    "rimraf": "3.0.0",
+    "tape": "4.11.0",
+    "updtr": "3.1.0",
+    "webpack": "4.39.2",
+    "webpack-dev-server": "3.8.0"
   },
   "scripts": {
-    "prebuild": "npm test",
+    "prebuild": "npm test && mkdir dist",
     "build": "NODE_ENV=production webpack",
     "postbuild": "cp -rf build/*.js dist",
     "clean": "rimraf build/*.js coverage report",
     "commit": "commit-wizard",
-    "lint:js": "eslint . --ext .js --ext .json --ignore-path .gitignore",
+    "lint:js": "eslint . --ext .js --ext .json --fix",
     "start": "webpack-dev-server",
     "stats:js": "plato -r -d report -t \"Code metrics\" -e .eslintrc app",
     "test": "run-s lint:js test:karma",
     "test:karma": "karma start config/karma.config.js",
-    "upgrade": "updtr --save-exact"
+    "upgrade": "updtr"
   }
 }

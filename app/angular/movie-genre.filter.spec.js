@@ -7,7 +7,7 @@ it('should return an array only containing movies with matching the genre "Horro
     const movies = [
         {genre: 'Horror'},
         {genre: 'Drama'},
-        {genre: 'Horror'}
+        {genre: 'Horror'},
     ];
 
     // Act
@@ -28,7 +28,7 @@ it('should register the filter to angular so that it can be retrieved', () => {
     // Use angular mocks to get hold of core services and components registered to the module.
     // Although any services can be injected through the inject functions callback,
     // it is cleaner to request the $injector service and call it's get method.
-    angular.mock.inject($injector => {
+    angular.mock.inject(($injector) => {
         // Get the instance of the filter.
         movieGenreFilter = $injector.get('movieGenreFilter');
     });

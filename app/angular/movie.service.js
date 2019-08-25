@@ -10,7 +10,7 @@ function MovieService($http, actorService) {
 
     const getMovies = () =>
         $http.post('/getMovies')
-            .success(data => {
+            .success((data) => {
                 console.log(data);
             })
             .error((data, status) => {
@@ -18,7 +18,7 @@ function MovieService($http, actorService) {
             });
 
     return {
-        getMovies
+        getMovies,
     };
 }
 MovieService.$inject = ['$http', 'actorService'];

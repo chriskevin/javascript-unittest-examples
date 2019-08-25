@@ -4,17 +4,17 @@ module.exports = function(config) {
     config.set({
         basePath: path.resolve(__dirname, '../'),
 
-        frameworks: ['jasmine'],
+        frameworks: ['jasmine', 'tap'],
 
         files: [
-            'config/setup.spec.js'
+            'config/setup.spec.js',
         ],
 
         preprocessors: {
             // source files, that you wanna generate coverage for
             // do not include tests or libraries
             // (these files will be instrumented by Istanbul)
-            'config/setup.spec.js': ['webpack', 'sourcemap']
+            'config/setup.spec.js': ['webpack', 'sourcemap'],
         },
 
         reportSlowerThan: 100,
@@ -28,7 +28,7 @@ module.exports = function(config) {
 
             reporters: [
                 {type: 'text-summary'},
-                {type: 'lcov', file: 'lcov.info'}
+                {type: 'lcov', file: 'lcov.info'},
             ],
 
             check: {
@@ -36,42 +36,45 @@ module.exports = function(config) {
                     statements: 90,
                     branches: 90,
                     functions: 90,
-                    lines: 90
-                }
-            }
+                    lines: 90,
+                },
+            },
         },
 
         tapReporter: {
-            prettifier: 'faucet'
+            prettifier: 'faucet',
         },
 
         webpack: {
+            mode: 'production',
+
             node: {
-                fs: 'empty'
+                fs: 'empty',
             },
 
             devtool: 'inline-cheap-source-map',
 
             module: {
-                loaders: [
+                rules: [
                     {
                         test: /\.js$/,
-                        loader: 'babel',
                         exclude: /(node_modules)/,
-                        query: {
-                            presets: ['es2015'],
-                            plugins: [
-                                ['__coverage__', {ignore: '**/*.spec.js'}]
-                            ]
-                        }
-                    }
-                ]
+                        use: {
+                            loader: 'babel-loader',
+                            options: {
+                                presets: ['@babel/preset-env'],
+                                plugins: [
+                                    ['istanbul', {ignore: '**/*.spec.js'}],
+                                ],
+                            },
+                        },
+                    },
+                ],
             },
 
             resolve: {
-                root: __dirname,
-                extensions: ['', '.js', '.json']
-            }
+                extensions: ['.js', '.json'],
+            },
         },
 
         webpackServer: {noInfo: true},
@@ -93,6 +96,6 @@ module.exports = function(config) {
         concurrency: Infinity,
 
         autoWatch: false,
-        singleRun: true
+        singleRun: true,
     });
 };

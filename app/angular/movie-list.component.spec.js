@@ -18,14 +18,14 @@ describe('movieListComponent', () => {
         // Use angular-mocks to instantiate the module programmatically.
         angular.mock.module('ckUnitTest');
 
-        angular.mock.module($provide => {
+        angular.mock.module(($provide) => {
             $provide.factory('movieService', () => mockMovieService);
         });
 
         // Use angular mocks to get hold of core services and components registered to the module.
         // Although any services can be injected through the inject functions callback,
         // it is cleaner to request the $injector service and call it's get method.
-        angular.mock.inject($injector => {
+        angular.mock.inject(($injector) => {
             // Request the rootScope and create a child scope.
             $scope = ($injector.get('$rootScope')).$new();
 
@@ -60,15 +60,15 @@ describe('movieListComponent', () => {
             expect(mockMovieService.getMovies.calls.count()).toEqual(1);
         });
 
-        it('should set the fetched movies to the controller scope', done => {
+        it('should set the fetched movies to the controller scope', (done) => {
             // Arrange
             const movies = [
                 {
-                    title: 'Dunwich Horror, The'
+                    title: 'Dunwich Horror, The',
                 },
                 {
-                    title: 'Hills Have Eyes, The'
-                }
+                    title: 'Hills Have Eyes, The',
+                },
             ];
             mockMovieService.getMovies.and.returnValue($q.resolve(movies));
 
@@ -81,10 +81,10 @@ describe('movieListComponent', () => {
             done();
         });
 
-        it('should set the controllers error property to the returned error message', done => {
+        it('should set the controllers error property to the returned error message', (done) => {
             // Arrange
             const error = {
-                message: 'No movies are currently available.'
+                message: 'No movies are currently available.',
             };
             mockMovieService.getMovies.and.returnValue($q.reject(error));
 

@@ -11,7 +11,7 @@ describe('MovieService', () => {
     let $httpBackend;
     const movies = [
         {title: 'Dunwich Horror, The'},
-        {title: 'Hills Have Eyes, The'}
+        {title: 'Hills Have Eyes, The'},
     ];
 
     // Define a beforeEach that should be run before all tests.
@@ -23,20 +23,20 @@ describe('MovieService', () => {
         angular.mock.module('ckUnitTest');
 
         // Override factory provider for dependencies and return spyable mocks.
-        angular.mock.module($provide => {
+        angular.mock.module(($provide) => {
             $provide.factory('actorService', () => mockActorService);
         });
 
         // Use angular mocks to get hold of core services and components registered to the module.
         // Although any services can be injected through the inject functions callback,
         // it is cleaner to request the $injector service and call it's get method.
-        angular.mock.inject($injector => {
+        angular.mock.inject(($injector) => {
             $httpBackend = $injector.get('$httpBackend');
 
             // Define default responses for each http call.
             $httpBackend
                 .whenPOST('/getMovies')
-                    .respond(movies);
+                .respond(movies);
 
             // Get the instance of the service.
             movieService = $injector.get('movieService');

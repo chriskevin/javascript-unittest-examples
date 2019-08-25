@@ -5,7 +5,7 @@ import AppComponent from './app.component';
  * @param {MovieService} movieService [description]
  */
 function controller(movieService) {
-    const ctrl = this;
+    const ctrl = this; // eslint-disable-line no-invalid-this
 
     // Public fields
     ctrl.movies = [];
@@ -13,10 +13,10 @@ function controller(movieService) {
     // Public methods
     ctrl.getMovies = () =>
         movieService.getMovies()
-            .then(movies => {
+            .then((movies) => {
                 ctrl.movies = movies;
             })
-            .catch(reason => {
+            .catch((reason) => {
                 ctrl.error = reason.message;
             });
 
@@ -30,7 +30,7 @@ AppComponent.component('movieList', {
         <ul>
             <li data-ng-repeat="movie in $ctrl.movies">{{movie.title}}</li>
         </ul>
-    `
+    `,
 });
 
 export default controller;

@@ -3,44 +3,47 @@ const path = require('path');
 const webpack = require('webpack');
 
 module.exports = {
+    mode: 'production',
+
     entry: {
         main: path.resolve(__dirname, 'app/main.entry.js'),
-        vendor: path.resolve(__dirname, 'app/vendor.js')
+        vendor: path.resolve(__dirname, 'app/vendor.js'),
     },
 
     output: {
         path: path.resolve(__dirname, 'build'),
-        filename: '[name].js'
+        filename: '[name].js',
     },
 
     module: {
-        loaders: [
+        rules: [
             {
                 test: /\.js$/,
-                loader: 'babel',
                 exclude: /(node_modules)/,
-                query: {
-                    presets: ['es2015'],
-                    plugins: []
-                }
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['@babel/preset-env'],
+                        plugins: [],
+                    },
+                },
             },
             {
                 test: /\.json$/,
-                loader: 'json'
-            }
-        ]
+                loader: 'json',
+            },
+        ],
     },
 
     resolve: {
-        root: __dirname,
-        extensions: ['', '.js', '.json']
+        extensions: ['.js', '.json'],
     },
 
     plugins: [
         new webpack.optimize.CommonsChunkPlugin(
-          'vendor', 'vendor.js', Infinity
-        )
+            'vendor', 'vendor.js', Infinity
+        ),
     ],
 
-    devtool: 'cheap-source-map'
+    devtool: 'cheap-source-map',
 };
