@@ -29,7 +29,7 @@
   },
   "browserslist": "> 0.25%, not dead",
   "dependencies": {
-    "angular": "1.7.8",
+    "angular": "1.8.0",
     "angular-mocks": "1.7.8",
     "core-js": "3.2.1",
     "react": "16.9.0"
